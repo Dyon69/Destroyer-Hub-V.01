@@ -2,12 +2,14 @@
 local screenGui = Instance.new("ScreenGui")
 screenGui.Parent = game.Players.LocalPlayer.PlayerGui
 
--- Create a Frame for the main GUI
+-- Create a DraggableFrame for the main GUI
 local mainFrame = Instance.new("Frame")
 mainFrame.Size = UDim2.new(0.5, 0, 0.5, 0)
 mainFrame.Position = UDim2.new(0.25, 0, 0.25, 0)
 mainFrame.BackgroundColor3 = Color3.new(0, 0, 0) -- Black
 mainFrame.BorderSizePixel = 5
+mainFrame.Active = true -- Set Active to true for mobile input
+mainFrame.Draggable = true -- Make the frame draggable
 mainFrame.Parent = screenGui
 
 -- Create a title text label
@@ -19,6 +21,31 @@ title.Text = "Destroyer Hub (V0.1)"
 title.Font = Enum.Font.SourceSansBold
 title.TextSize = 18
 title.Parent = mainFrame
+
+-- Variable to store initial touch offset
+local touchOffset = Vector2.new(0, 0)
+
+-- Function to handle touch input
+local function onTouchStart(input)
+    touchOffset = input.Position - mainFrame.Position
+end
+
+local function onTouchMove(input)
+    mainFrame.Position = UDim2.new(0, input.Position.X - touchOffset.X, 0, input.Position.Y - touchOffset.Y)
+end
+
+-- Connect touch events
+mainFrame.InputBegan:Connect(function(input, gameProcessedEvent)
+    if not gameProcessedEvent and input.UserInputType == Enum.UserInputType.Touch then
+        onTouchStart(input)
+    end
+end)
+
+mainFrame.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Touch then
+        onTouchMove(input)
+    end
+end)
 
 -- Create a Tab button
 local tabButton = Instance.new("TextButton")
