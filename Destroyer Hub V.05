@@ -79,18 +79,18 @@ tab1Frame.Position = UDim2.new(0, 0, 0.2, 0)
 tab1Frame.BackgroundColor3 = Color3.new(0.4, 0.4, 0.4) -- Light Gray
 tab1Frame.Parent = mainFrame
 
--- Example button 1 inside Tab 1
-local flingButton1 = Instance.new("TextButton")
-flingButton1.Size = UDim2.new(0.4, 0, 0.15, 0)
-flingButton1.Position = UDim2.new(0.05, 0, 0.05, 0)
-flingButton1.BackgroundColor3 = Color3.new(0, 0.5, 0.2) -- Green
-flingButton1.TextColor3 = Color3.new(1, 1, 1) -- White
-flingButton1.Text = "Click Fling 1"
-flingButton1.Parent = tab1Frame
+-- Example button 1 inside Tab 1 (Click Fling)
+local flingButton = Instance.new("TextButton")
+flingButton.Size = UDim2.new(0.4, 0, 0.15, 0)
+flingButton.Position = UDim2.new(0.05, 0, 0.05, 0)
+flingButton.BackgroundColor3 = Color3.new(0, 0.5, 0.2) -- Green
+flingButton.TextColor3 = Color3.new(1, 1, 1) -- White
+flingButton.Text = "Click Fling"
+flingButton.Parent = tab1Frame
 
--- Connect event for the Fling button 1
-flingButton1.MouseButton1Click:Connect(function()
-    print("Click Fling 1 button clicked!")
+-- Connect event for the Click Fling button
+flingButton.MouseButton1Click:Connect(function()
+    print("Click Fling button clicked!")
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/obf_5wpM7bBcOPspmX7lQ3m75SrYNWqxZ858ai3tJdEAId6jSI05IOUB224FQ0VSAswH.lua.txt'), true))()
 end)
 
@@ -151,7 +151,7 @@ yeetFlingButton.Parent = tab1Frame
 -- Connect event for the Yeet Fling GUI V4 button
 yeetFlingButton.MouseButton1Click:Connect(function()
     print("Yeet Fling GUI V4 button clicked!")
-    getgenv().ToggleGUI = true
+    getgenv().ToggleGUI = true -- true/false
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Vcsk/RobloxScripts/main/FEYeetGuiV4.lua"))()
 end)
 
